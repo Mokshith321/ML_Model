@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        .centre{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(./static/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .output{
+            background-image: linear-gradient(to right, #44a0eb, #5bf1ff);
+            width: fit-content;
+            height: 20vh;
+            color: black;
+            border: 2px solid black;
+            border-radius: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.3em;
+            font-weight: bold;
+            padding: 0em 1em;
+        }
+          
+        @keyframes grow {
+            0% {
+              transform: scale(0);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+        
+          .output {
+            animation-name: grow;
+            animation-duration: 1s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: forwards;
+          }
+          @media (max-width: 700px){
+            .centre{
+                padding: 0em 2em;
+            }
+            .output{
+                height:fit-content;
+                padding:1.5em 1em;
+            }
+          }
+    </style>
+</head>
+<body>
+    <div class="centre">
+        <div class="output">
+            The company that can possibly hire is {{company}}
+        </div>
+    </div>
+</body>
+</html>

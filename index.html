@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            background-color:  rgb(194, 104, 104);
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.3rem;
+        }
+        .center{
+            background-image: linear-gradient(to right, #44a0eb, #5bf1ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+        .row{
+            display: flex;
+            flex-direction: row;
+        }
+        .col{
+            display: flex;
+            flex-direction: column;
+        }
+        .title{
+            text-decoration: underline;
+            text-decoration-color: beige;
+            text-decoration-skip-ink: none;
+            text-decoration-style: wavy;
+        }
+        .container{
+            background-color: rgb(180,180,180);
+            border: 5px solid blanchedalmond;
+            border-radius: 10px;
+            width: 60vw;
+            height: 80vh;
+            padding: 2em;
+            position: relative;
+            overflow-y:scroll ;
+        }
+
+        select{
+            width: 25rem;
+            height: 2.8em;
+            position: absolute;
+            padding:0em 1em;
+            right: 1.8em;
+            border-radius: 5px;
+            font-size: 0.6em;
+            border:1px solid #44a0eb;
+            top:-0.5em;
+        }
+        .options{
+            height: 2em;
+            font-size: 1.3em;
+            margin-bottom: 1em;
+            position: relative;
+        }
+        .centre{
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-content: center;
+        }
+        .btn{
+            border-radius:8px;
+            border: 2px solid black;
+            padding: 0.3em 0.8em ;
+            font-size: 1.4em;
+            box-shadow: 5px 5px 5px black;
+        }
+        .btn:hover{
+            cursor: pointer;
+        }
+        #myInput{
+            box-sizing: border-box;
+            background-repeat: no-repeat;
+        }
+        #overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0,0,0,0.9);
+          z-index: 1;
+          display: none;
+        }
+        
+        .my-class {
+            display:none;
+          position: fixed;
+          padding: 20px;
+          background-color: #fff;
+          z-index: 2;
+        }
+        
+        #overlay + #my-div {
+          transform: translateY(0);
+        }
+        @media (max-width: 1250px){
+            select{
+                width: 20rem;
+                right: 2em;
+            }
+        }
+        @media (max-width:1075px){
+            .container{
+                width:80vw;
+            }
+        }
+        @media (max-width: 800px){
+            .container{
+                width: 80vw;
+                height: 80vh;
+            }
+            .options{
+                height: 3em;
+            }
+            .row{
+                display: flex;
+                flex-direction: column;
+            }
+            select{
+                top: 2.5em;
+                right: 1em;
+            }
+        }
+        @media (max-width: 490px){
+            select{
+                width: 17rem;
+                right: 0.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="center col">
+    <div >
+        <h1 class="title">Page_Title</h1>
+        </div>
+    <div class="container col">
+        <form action="/submit" method="POST">
+            <div class="col">
+                <div class="options">
+                    Job Post :  
+               <select name="job_post" id="job_post" class="DropDown">
+                    </select>
+                </div>
+                <div class="options row">
+                    <div class="col">Required Skills:  </div>
+                    <div class="col"><select name="required_skills" id="required_skills" class="DropDown">
+                    </select></div>
+                </div>
+                <div class="options row">
+                    <div class="col">Exp Required:</div>
+                    <div class="col"><select name="exp_required" id="exp_required" class="DropDown">
+                    </select></div>
+                </div>
+                <div class="options row">
+                    <div class="col">Salary Offered: </div>
+                     <div class="col"><select name="salary_offered" id="salary_offered" class="DropDown">
+                    </select></div>
+                </div>
+                <div class="options row">
+                    <div class="col">Job Location:  </div>
+                  <div class="col"><select name="job_location" id="job_location" class="DropDown">
+                    </select></div>
+                </div>
+                <div class="options row">
+                    <div class="col">Company Rating:  </div>
+                  <div class="col"><select name="company_rating" id="company_rating" class="DropDown">
+                    </select></div>
+                </div>
+                <div class="options row">
+                    <div class="col">Company Review:  </div>
+                  <div class="col"><select name="company_review" id="company_review" class="DropDown">
+                    </select></div>
+                </div>
+
+                <div class="centre">
+                <input type = "submit" class="btn" id="submit-btn" value = "Submit">
+                </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
+    <script type = "text/javascript" 
+    src = "{{ url_for('static', filename = 'app.js') }}" ></script>    
+</body>
+</html>
